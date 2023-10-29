@@ -1,0 +1,26 @@
+[
+	{
+		"file": "D:\\Projects\\unreal_demo\\Source\\unreal_demo\\unreal_demo.Build.cs",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Projects\\unreal_demo\\.vscode\\compileCommands_unreal_demo\\unreal_demo.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Projects\\unreal_demo\\Source\\unreal_demo\\unreal_demo.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Projects\\unreal_demo\\.vscode\\compileCommands_unreal_demo\\unreal_demo.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Projects\\unreal_demo\\Source\\unreal_demo\\unreal_demo.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Projects\\unreal_demo\\.vscode\\compileCommands_unreal_demo\\unreal_demo.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	}
+]

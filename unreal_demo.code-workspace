@@ -1,0 +1,589 @@
+{
+  "folders": [
+    {
+      "name": "unreal_demo",
+      "path": "."
+    },
+    {
+      "name": "UE5",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.3"
+    }
+  ],
+  "settings": {
+    "typescript.tsc.autoDetect": "off",
+    "npm.autoDetect": "off",
+    "files.associations": {
+      "*.jslib": "javascript",
+      ".env*": "dotenv",
+      "iostream": "cpp",
+      "*.rh": "cpp"
+    }
+  },
+  "extensions": {
+    "recommendations": ["ms-vscode.cpptools", "ms-dotnettools.csharp"]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "unreal_demo Win64 Debug Build",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Debug",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Debug Rebuild",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Debug",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "dependsOn": ["unreal_demo Win64 Debug Clean"],
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Debug Clean",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Clean.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Debug",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 DebugGame Build",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "DebugGame",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 DebugGame Rebuild",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "DebugGame",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "dependsOn": ["unreal_demo Win64 DebugGame Clean"],
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 DebugGame Clean",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Clean.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "DebugGame",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Development Build",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Development",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Development Rebuild",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Development",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "dependsOn": ["unreal_demo Win64 Development Clean"],
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Development Clean",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Clean.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Development",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Test Build",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Test",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Test Rebuild",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Test",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "dependsOn": ["unreal_demo Win64 Test Clean"],
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Test Clean",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Clean.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Test",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Shipping Build",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Shipping",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Shipping Rebuild",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Shipping",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "dependsOn": ["unreal_demo Win64 Shipping Clean"],
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demo Win64 Shipping Clean",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Clean.bat",
+        "args": [
+          "unreal_demo",
+          "Win64",
+          "Shipping",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demoEditor Win64 Debug Build",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demoEditor",
+          "Win64",
+          "Debug",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demoEditor Win64 Debug Rebuild",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demoEditor",
+          "Win64",
+          "Debug",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "dependsOn": ["unreal_demoEditor Win64 Debug Clean"],
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demoEditor Win64 Debug Clean",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Clean.bat",
+        "args": [
+          "unreal_demoEditor",
+          "Win64",
+          "Debug",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demoEditor Win64 DebugGame Build",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demoEditor",
+          "Win64",
+          "DebugGame",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demoEditor Win64 DebugGame Rebuild",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demoEditor",
+          "Win64",
+          "DebugGame",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "dependsOn": ["unreal_demoEditor Win64 DebugGame Clean"],
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demoEditor Win64 DebugGame Clean",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Clean.bat",
+        "args": [
+          "unreal_demoEditor",
+          "Win64",
+          "DebugGame",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demoEditor Win64 Development Build",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demoEditor",
+          "Win64",
+          "Development",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demoEditor Win64 Development Rebuild",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Build.bat",
+        "args": [
+          "unreal_demoEditor",
+          "Win64",
+          "Development",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "dependsOn": ["unreal_demoEditor Win64 Development Clean"],
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "label": "unreal_demoEditor Win64 Development Clean",
+        "group": "build",
+        "command": "Engine\\Build\\BatchFiles\\Clean.bat",
+        "args": [
+          "unreal_demoEditor",
+          "Win64",
+          "Development",
+          "D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-waitmutex"
+        ],
+        "problemMatcher": "$msCompile",
+        "type": "shell",
+        "options": {
+          "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch unreal_demo (Debug)",
+        "request": "launch",
+        "program": "D:\\Projects\\unreal_demo\\Binaries\\Win64\\UnrealGame-Win64-Debug.exe",
+        "preLaunchTask": "unreal_demo Win64 Debug Build",
+        "args": [],
+        "cwd": "C:\\Program Files\\Epic Games\\UE_5.3",
+        "stopAtEntry": false,
+        "console": "externalTerminal",
+        "type": "cppvsdbg",
+        "visualizerFile": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+        "sourceFileMap": {
+          "D:\\build\\++UE5\\Sync": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "name": "Launch unreal_demo (DebugGame)",
+        "request": "launch",
+        "program": "D:\\Projects\\unreal_demo\\Binaries\\Win64\\UnrealGame-Win64-DebugGame.exe",
+        "preLaunchTask": "unreal_demo Win64 DebugGame Build",
+        "args": [],
+        "cwd": "C:\\Program Files\\Epic Games\\UE_5.3",
+        "stopAtEntry": false,
+        "console": "externalTerminal",
+        "type": "cppvsdbg",
+        "visualizerFile": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+        "sourceFileMap": {
+          "D:\\build\\++UE5\\Sync": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "name": "Launch unreal_demo (Development)",
+        "request": "launch",
+        "program": "D:\\Projects\\unreal_demo\\Binaries\\Win64\\UnrealGame.exe",
+        "preLaunchTask": "unreal_demo Win64 Development Build",
+        "args": [],
+        "cwd": "C:\\Program Files\\Epic Games\\UE_5.3",
+        "stopAtEntry": false,
+        "console": "externalTerminal",
+        "type": "cppvsdbg",
+        "visualizerFile": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+        "sourceFileMap": {
+          "D:\\build\\++UE5\\Sync": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "name": "Launch unreal_demo (Test)",
+        "request": "launch",
+        "program": "D:\\Projects\\unreal_demo\\Binaries\\Win64\\UnrealGame-Win64-Test.exe",
+        "preLaunchTask": "unreal_demo Win64 Test Build",
+        "args": [],
+        "cwd": "C:\\Program Files\\Epic Games\\UE_5.3",
+        "stopAtEntry": false,
+        "console": "externalTerminal",
+        "type": "cppvsdbg",
+        "visualizerFile": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+        "sourceFileMap": {
+          "D:\\build\\++UE5\\Sync": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "name": "Launch unreal_demo (Shipping)",
+        "request": "launch",
+        "program": "D:\\Projects\\unreal_demo\\Binaries\\Win64\\UnrealGame-Win64-Shipping.exe",
+        "preLaunchTask": "unreal_demo Win64 Shipping Build",
+        "args": [],
+        "cwd": "C:\\Program Files\\Epic Games\\UE_5.3",
+        "stopAtEntry": false,
+        "console": "externalTerminal",
+        "type": "cppvsdbg",
+        "visualizerFile": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+        "sourceFileMap": {
+          "D:\\build\\++UE5\\Sync": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "name": "Launch unreal_demoEditor (Debug)",
+        "request": "launch",
+        "program": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-Debug.exe",
+        "preLaunchTask": "unreal_demoEditor Win64 Debug Build",
+        "args": ["D:\\Projects\\unreal_demo\\unreal_demo.uproject"],
+        "cwd": "C:\\Program Files\\Epic Games\\UE_5.3",
+        "stopAtEntry": false,
+        "console": "externalTerminal",
+        "type": "cppvsdbg",
+        "visualizerFile": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+        "sourceFileMap": {
+          "D:\\build\\++UE5\\Sync": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "name": "Launch unreal_demoEditor (DebugGame)",
+        "request": "launch",
+        "program": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-DebugGame.exe",
+        "preLaunchTask": "unreal_demoEditor Win64 DebugGame Build",
+        "args": ["D:\\Projects\\unreal_demo\\unreal_demo.uproject"],
+        "cwd": "C:\\Program Files\\Epic Games\\UE_5.3",
+        "stopAtEntry": false,
+        "console": "externalTerminal",
+        "type": "cppvsdbg",
+        "visualizerFile": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+        "sourceFileMap": {
+          "D:\\build\\++UE5\\Sync": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "name": "Launch unreal_demoEditor (Development)",
+        "request": "launch",
+        "program": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+        "preLaunchTask": "unreal_demoEditor Win64 Development Build",
+        "args": ["D:\\Projects\\unreal_demo\\unreal_demo.uproject"],
+        "cwd": "C:\\Program Files\\Epic Games\\UE_5.3",
+        "stopAtEntry": false,
+        "console": "externalTerminal",
+        "type": "cppvsdbg",
+        "visualizerFile": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+        "sourceFileMap": {
+          "D:\\build\\++UE5\\Sync": "C:\\Program Files\\Epic Games\\UE_5.3"
+        }
+      },
+      {
+        "name": "Generate Project Files",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "UnrealBuildTool Win64 Development Build",
+        "program": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Build\\BatchFiles\\RunUBT.bat",
+        "args": [
+          "-projectfiles",
+          "-vscode",
+          "-project=D:\\Projects\\unreal_demo\\unreal_demo.uproject",
+          "-game",
+          "-engine",
+          "-dotnet"
+        ],
+        "console": "externalTerminal",
+        "stopAtEntry": false,
+        "cwd": "C:\\Program Files\\Epic Games\\UE_5.3"
+      }
+    ]
+  }
+}
