@@ -16,7 +16,7 @@ public class unreal_demo : ModuleRules
                 "CoreUObject",
                 "Engine",
                 "InputCore",
-                "Http",
+                "HTTP",
                 "Json",
                 "JsonUtilities"
             }

@@ -14,11 +14,7 @@
             "cStandard": "c17",
             "cppStandard": "c++20",
             "intelliSenseMode": "msvc-x64",
-            "compileCommands": "D:\\Projects\\unreal_demo\\.vscode\\compileCommands_Default.json",
-            "includePath": [
-                "${default}",
-                "${workspaceFolder}/Source/unreal_demo/Public"
-            ]
+            "compileCommands": "D:\\Projects\\unreal_demo\\.vscode\\compileCommands_Default.json"
         }
     ],
     "version": 4
