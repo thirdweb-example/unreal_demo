@@ -10,15 +10,13 @@
 AThirdwebManager::AThirdwebManager()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	ServerUrl = "";
+	ServerUrl = "http://localhost:8000";
 }
 
-void AThirdwebManager::PerformLogin(const FString &GameServerUrl, const FString &Username, const FString &Password)
+void AThirdwebManager::PerformLogin(const FString &Username, const FString &Password)
 {
-	this->ServerUrl = GameServerUrl;
-
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
-	HttpRequest->SetURL(GameServerUrl + "/login");
+	HttpRequest->SetURL(this->ServerUrl + "/login");
 	HttpRequest->SetVerb("POST");
 	HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
@@ -41,18 +39,29 @@ void AThirdwebManager::PerformLogin(const FString &GameServerUrl, const FString 
             int32 StatusCode = Response->GetResponseCode();
 
             if(StatusCode == 200)
-            {
-                this->OnLoginResponse.Broadcast(true, Response->GetContentAsString());
-            }
+			{
+				TSharedPtr<FJsonObject> JsonObject;
+				TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
+
+				if (FJsonSerializer::Deserialize(Reader, JsonObject))
+				{
+					AuthToken = JsonObject->GetStringField("authToken");
+				}
+
+				this->OnLoginResponse.Broadcast(true, Response->GetContentAsString());
+				UE_LOG(LogTemp, Warning, TEXT("AuthToken: %s"), *AuthToken);
+			}
             else
             {
                 FString ErrorMsg = FString::Printf(TEXT("HTTP Error: %d, Response: %s"), StatusCode, *(Response->GetContentAsString()));
                 this->OnLoginResponse.Broadcast(false, ErrorMsg);
+				UE_LOG(LogTemp, Warning, TEXT("ErrorMsg: %s"), *ErrorMsg);
             }
         }
         else
         {
             this->OnLoginResponse.Broadcast(false, TEXT("Failed to connect to the server."));
+			UE_LOG(LogTemp, Warning, TEXT("Failed to connect to the server."));
         } });
 
 	HttpRequest->ProcessRequest();
@@ -66,10 +75,7 @@ void AThirdwebManager::PerformClaim()
 	HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
 	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-	JsonObject->SetStringField("walletAddress", "0x450b943729Ddba196Ab58b589Cea545551DF71CC"); // TODO: get this from the login response
-	JsonObject->SetStringField("chain", "goerli");
-	JsonObject->SetStringField("contractAddress", "0x450b943729Ddba196Ab58b589Cea545551DF71CC");
-	JsonObject->SetStringField("amount", "1337");
+	JsonObject->SetStringField("authToken", AuthToken);
 
 	FString OutputString;
 	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
@@ -88,17 +94,78 @@ void AThirdwebManager::PerformClaim()
             if(StatusCode == 200)
             {
                 this->OnClaimResponse.Broadcast(true, Response->GetContentAsString());
+				UE_LOG(LogTemp, Warning, TEXT("Claim response: %s"), *Response->GetContentAsString());
             }
             else
             {
                 FString ErrorMsg = FString::Printf(TEXT("HTTP Error: %d, Response: %s"), StatusCode, *(Response->GetContentAsString()));
                 this->OnClaimResponse.Broadcast(false, ErrorMsg);
+				UE_LOG(LogTemp, Warning, TEXT("ErrorMsg: %s"), *ErrorMsg);
             }
         }
         else
         {
             this->OnClaimResponse.Broadcast(false, TEXT("Failed to connect to the server."));
+			UE_LOG(LogTemp, Warning, TEXT("Failed to connect to the server."));
         } });
+
+	HttpRequest->ProcessRequest();
+}
+
+void AThirdwebManager::GetBalance()
+{
+	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
+	HttpRequest->SetURL(this->ServerUrl + "/get-erc20-balance");
+	HttpRequest->SetVerb("POST");
+	HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+
+	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+	JsonObject->SetStringField("authToken", AuthToken);
+
+	FString OutputString;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+	UE_LOG(LogTemp, Warning, TEXT("OutputString: %s"), *OutputString);
+
+	HttpRequest->SetContentAsString(OutputString);
+
+	HttpRequest->OnProcessRequestComplete().BindLambda([this](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+													   {
+		if(bWasSuccessful && Response.IsValid())
+		{
+			int32 StatusCode = Response->GetResponseCode();
+			if(StatusCode == 200)
+			{
+				TSharedPtr<FJsonObject> JsonObject;
+				TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
+				if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+				{
+					const TSharedPtr<FJsonObject> *ResultObject;
+					if (JsonObject->TryGetObjectField("result", ResultObject))
+					{
+						FString DisplayValue;
+						if ((*ResultObject)->TryGetStringField("displayValue", DisplayValue))
+						{
+							this->OnBalanceResponse.Broadcast(true, DisplayValue);
+							return;
+						}
+					}
+				}
+				UE_LOG(LogTemp, Warning, TEXT("Balance response: %s"), *Response->GetContentAsString());
+			}
+			else
+			{
+				FString ErrorMsg = FString::Printf(TEXT("HTTP Error: %d, Response: %s"), StatusCode, *(Response->GetContentAsString()));
+				this->OnBalanceResponse.Broadcast(false, ErrorMsg);
+				UE_LOG(LogTemp, Warning, TEXT("ErrorMsg: %s"), *ErrorMsg);
+			}
+		}
+		else
+		{
+			this->OnBalanceResponse.Broadcast(false, TEXT("Failed to connect to the server."));
+			UE_LOG(LogTemp, Warning, TEXT("Failed to connect to the server."));
+		} });
 
 	HttpRequest->ProcessRequest();
 }
