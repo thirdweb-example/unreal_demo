@@ -16,7 +16,7 @@ AThirdwebManager::AThirdwebManager()
 void AThirdwebManager::PerformLogin(const FString &Username, const FString &Password)
 {
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
-	HttpRequest->SetURL(this->ServerUrl + "/login");
+	HttpRequest->SetURL(this->ServerUrl + "/user/login");
 	HttpRequest->SetVerb("POST");
 	HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
@@ -70,7 +70,7 @@ void AThirdwebManager::PerformLogin(const FString &Username, const FString &Pass
 void AThirdwebManager::PerformClaim()
 {
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
-	HttpRequest->SetURL(this->ServerUrl + "/claim-erc20");
+	HttpRequest->SetURL(this->ServerUrl + "/engine/claim-erc20");
 	HttpRequest->SetVerb("POST");
 	HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
@@ -115,7 +115,7 @@ void AThirdwebManager::PerformClaim()
 void AThirdwebManager::GetBalance()
 {
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
-	HttpRequest->SetURL(this->ServerUrl + "/get-erc20-balance");
+	HttpRequest->SetURL(this->ServerUrl + "/engine/get-erc20-balance");
 	HttpRequest->SetVerb("POST");
 	HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
