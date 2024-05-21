@@ -10,7 +10,7 @@
 AThirdwebManager::AThirdwebManager()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	ServerUrl = "https://engine-express-bez4.chainsaw-dev.zeet.app";
+	ServerUrl = "http://localhost:8000";
 }
 
 void AThirdwebManager::PerformLogin(const FString &Username, const FString &Password)
